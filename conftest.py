@@ -48,15 +48,6 @@ def restore_server_configuration(host, username, password):
             remote.rename("config_inc.php.bak", "config_inc.php")
 
 
-@pytest.fixture
-def app(request, config):
-    global fixture
-    browser = request.config.getoption("--browser")
-    if fixture is None or not fixture.is_valid():
-        fixture = Application(browser=browser, base_url=config['web']['baseUrl'])
-    return fixture
-
-
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
