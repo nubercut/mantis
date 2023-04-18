@@ -19,12 +19,12 @@ class SoapHelper:
         password = self.app.config["webadmin"]["password"]
         client = Client(self.app.base_url + "/api/soap/mantisconnect.php?wsdl")
         try:
-            projects = self.convert_projects_to_model(list(client.service.mc_projects_get_user_accessible(username, password)))
-            return projects
+            projects_list = self.convert_projects_to_model(list(client.service.mc_projects_get_user_accessible(username, password)))
+            return projects_list
         except WebFault:
             return False
 
-    def convert_projects_to_model(self, projects):
+    def convert_projects_to_model(self, projects_list):
         def convert(project):
             return Project(id=str(project.id), name=project.name)
-        return list(map(convert, projects))
+        return list(map(convert, projects_list))
