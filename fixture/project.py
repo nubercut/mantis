@@ -56,12 +56,11 @@ class ProjectHelper:
 
     def manage_projects(self):
         wd = self.app.wd
-        wd.find_element_by_css_selector("a[href='/mantisbt-1.2.20/manage_proj_page.php']").click()
+        wd.get(self.app.base_url + "/manage_proj_page.php")
 
     def manage_page(self):
         wd = self.app.wd
-        wd.find_element_by_css_selector("a[href='/mantisbt-1.2.20/manage_overview_page.php']").click()
-
+        wd.get(self.app.base_url + "/manage_overview_page.php")
     def select_project(self, id):
         wd = self.app.wd
         wd.find_element(By.XPATH, f"//a[@href='manage_proj_edit_page.php?project_id={id}']").click()
