@@ -34,9 +34,9 @@ def app(request, config):
 #def configure_server(request, config):
 #    install_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
 
-    def fin():
-        restore_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
-    request.addfinalizer(fin)
+ #   def fin():
+ #       restore_server_configuration(config['ftp']['host'], config['ftp']['username'], config['ftp']['password'])
+ #   request.addfinalizer(fin)
 
 
 def install_server_configuration(host, username, password):
